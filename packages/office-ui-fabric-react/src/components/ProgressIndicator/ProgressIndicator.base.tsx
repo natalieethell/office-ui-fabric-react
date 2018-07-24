@@ -70,9 +70,7 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
             )
           : null}
         {description ? <div className={classNames.itemDescription}>{description}</div> : null}
-        {percentComplete
-          ? onAnnounceProgress && <Announced statusMessage={onAnnounceProgress(percentComplete)} />
-          : null}
+        {onAnnounceProgress && <Announced statusMessage={onAnnounceProgress(percentComplete)} />}
       </div>
     );
   }

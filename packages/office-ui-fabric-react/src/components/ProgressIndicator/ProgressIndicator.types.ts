@@ -57,7 +57,7 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   /**
    * Function that specifies announced updates for the screen reader.
    */
-  onAnnounceProgress?: (progress: number) => string | undefined;
+  onAnnounceProgress?: (progress?: number) => string | undefined;
 
   /**
    * Text alternative of the progress status, used by screen readers for reading the value of the progress.
