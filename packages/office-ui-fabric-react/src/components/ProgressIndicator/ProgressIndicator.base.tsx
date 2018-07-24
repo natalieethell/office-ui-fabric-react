@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { Announced } from '../../../../experiments/lib/Announced';
 import {
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
@@ -40,7 +41,8 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
       styles,
       theme,
       progressHidden,
-      onRenderProgress = this._onRenderProgress
+      onRenderProgress = this._onRenderProgress,
+      onAnnounceProgress
     } = this.props;
 
     const percentComplete =
@@ -68,6 +70,9 @@ export class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps
             )
           : null}
         {description ? <div className={classNames.itemDescription}>{description}</div> : null}
+        {percentComplete
+          ? onAnnounceProgress && <Announced statusMessage={onAnnounceProgress(percentComplete)} />
+          : null}
       </div>
     );
   }

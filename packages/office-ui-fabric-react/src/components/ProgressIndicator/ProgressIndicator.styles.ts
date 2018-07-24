@@ -5,7 +5,8 @@ import {
   keyframes,
   noWrap,
   getGlobalClassNames,
-  IRawStyle
+  IRawStyle,
+  hiddenContentStyle
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
@@ -127,6 +128,8 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             transition: 'width .15s linear'
           } as IRawStyle),
       classNames.progressBar
-    ]
+    ],
+
+    screenReaderText: hiddenContentStyle
   };
 };

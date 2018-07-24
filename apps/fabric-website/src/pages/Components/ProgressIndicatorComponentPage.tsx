@@ -22,6 +22,10 @@ export class ProgressIndicatorComponentPage extends React.Component<any, any> {
                 location: 'BestPractices'
               },
               {
+                text: 'Accessibility',
+                location: 'Accessibility'
+              },
+              {
                 text: 'Variants',
                 location: 'Variants'
               },

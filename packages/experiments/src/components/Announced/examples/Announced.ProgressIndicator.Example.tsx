@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
+import { Announced } from '../Announced';
+import { ProgressIndicator } from 'office-ui-fabric-react';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
-export interface IProgressIndicatorBasicExampleState {
+export interface IAnnouncedProgressIndicatorState {
   percentComplete: number;
 }
 
 const INTERVAL_DELAY = 100;
 const INTERVAL_INCREMENT = 0.01;
-const RESTART_WAIT_TIME = 2000;
+const RESTART_WAIT_TIME = 4000;
 
-export class ProgressIndicatorBasicExample extends React.Component<{}, IProgressIndicatorBasicExampleState> {
+export class AnnouncedProgressIndicatorExample extends React.Component<{}, IAnnouncedProgressIndicatorState> {
   private _interval: number;
   private _async: Async;
 
@@ -37,12 +38,15 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     const { percentComplete } = this.state;
 
     return (
-      <ProgressIndicator
-        label="Example title"
-        description="Example description"
-        percentComplete={percentComplete}
-        onAnnounceProgress={this._onAnnounceProgress}
-      />
+      <div>
+        <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />
+        <Announced statusMessage={this._onAnnounceProgress(percentComplete)} />
+        {/* <ProgressIndicator
+          label="Example title"
+          description="Example description"
+          percentComplete={percentComplete}
+          onAnnounceProgress={this.onAnnounceProgress}/> */}
+      </div>
     );
   }
 
@@ -72,14 +76,14 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     let update = undefined;
 
     if (progress !== undefined) {
-      if (progress === 1) {
-        update = 'Starting to upload files';
+      if (progress === 0) {
+        update = 'Starting';
         console.log(update);
-      } else if (Math.round(progress) === 50) {
-        update = 'Halfway done uploading files';
+      } else if (Math.round(progress * 100) / 100 === 0.5) {
+        update = 'Halfway done';
         console.log(update);
-      } else if (progress === 100) {
-        update = 'Uploading files complete';
+      } else if (progress === 1) {
+        update = 'Complete';
         console.log(update);
       }
     }

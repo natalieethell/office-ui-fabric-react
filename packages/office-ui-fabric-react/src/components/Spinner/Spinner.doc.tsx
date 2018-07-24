@@ -23,6 +23,9 @@ export const SpinnerPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
+  accessibility: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerAccessibility.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),

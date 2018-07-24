@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize } from './Spinner.types';
-import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import { Announced } from '../../../../experiments/lib/Announced';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 
@@ -32,13 +33,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
       <div {...nativeProps} className={classNames.root}>
         <div className={classNames.circle} />
         {label && <div className={classNames.label}>{label}</div>}
-        {statusMessage && (
-          <div role="status" aria-live={ariaLive}>
-            <DelayedRender>
-              <div className={classNames.screenReaderText}>{statusMessage}</div>
-            </DelayedRender>
-          </div>
-        )}
+        <Announced statusMessage={statusMessage} ariaLive={ariaLive} />
       </div>
     );
   }

@@ -96,6 +96,9 @@ export interface IDocPageProps {
   /** DON'Ts blurb as markdown string */
   donts?: string;
 
+  /** An overview on component accessibility */
+  accessibility?: string;
+
   /** Best practice as markdown string */
   bestPractices?: string;
 

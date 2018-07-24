@@ -40,6 +40,9 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageP
         )
       }
       overview={componentPageProps.overview ? <PageMarkdown>{componentPageProps.overview}</PageMarkdown> : undefined}
+      accessibility={
+        componentPageProps.accessibility ? <PageMarkdown>{componentPageProps.accessibility}</PageMarkdown> : undefined
+      }
       bestPractices={
         componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined
       }

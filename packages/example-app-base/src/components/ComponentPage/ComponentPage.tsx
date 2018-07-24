@@ -19,6 +19,8 @@ export interface IComponentPageProps {
   exampleCards?: JSX.Element;
   /** Array of implementation examples, displayed in the order defined */
   implementationExampleCards?: JSX.Element;
+  /** Component accessibility */
+  accessibility?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
   /** Component best practices **/
@@ -109,6 +111,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             {this._getComponentStatusBadges()}
             {this._getOverview()}
             {this._getDosAndDonts()}
+            {this._getAccessibility()}
             {this._getVariants()}
             {this._getImplementationExamples()}
             {this._getPropertiesTable()}
@@ -155,6 +158,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         {this.props.exampleCards && (
           <div className="ComponentPage-navLink">
             <Link href={this._baseUrl + '#Variants'}>Variants</Link>
+          </div>
+        )}
+        {this.props.accessibility && (
+          <div className="ComponentPage-navLink">
+            <Link href={this._baseUrl + '#Accessibility'}>Accessibility</Link>
           </div>
         )}
         {this.props.implementationExampleCards && (
@@ -389,6 +397,21 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   private _getComponentStatusBadges(): JSX.Element | undefined {
     if (this.props.componentStatus && this.props.areBadgesVisible) {
       return <div className="ComponentPage-componentStatusSection">{this.props.componentStatus}</div>;
+    }
+
+    return undefined;
+  }
+
+  private _getAccessibility(): JSX.Element | undefined {
+    if (this.props.accessibility) {
+      return (
+        <div className="ComponentPage-accessibilitySection">
+          <h2 className="ComponentPage-subHeading" id="Accessibility">
+            Accessibility
+          </h2>
+          {this.props.accessibility}
+        </div>
+      );
     }
 
     return undefined;

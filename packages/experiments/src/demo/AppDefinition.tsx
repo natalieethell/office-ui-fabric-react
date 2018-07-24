@@ -10,6 +10,12 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
+          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',
