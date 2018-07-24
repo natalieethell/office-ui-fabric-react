@@ -162,7 +162,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         )}
         {this.props.accessibility && (
           <div className="ComponentPage-navLink">
-            <Link href={this._baseUrl + '#Accessibility'}>Accessibility</Link>
+            <Link href={this._baseUrl + '#AccessibilityGuide'}>Accessibility Guide</Link>
           </div>
         )}
         {this.props.implementationExampleCards && (
@@ -407,7 +407,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       return (
         <div className="ComponentPage-accessibilitySection">
           <h2 className="ComponentPage-subHeading" id="Accessibility">
-            Accessibility
+            Accessibility Guide
           </h2>
           {this.props.accessibility}
         </div>
