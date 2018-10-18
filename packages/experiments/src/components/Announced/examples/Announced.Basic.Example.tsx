@@ -12,7 +12,6 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
-// import { KeyboardZone } from '@ms/items-view/lib/private/components/keyboard/KeyboardZone'
 
 const _items: any[] = [];
 
@@ -98,8 +97,8 @@ export class AnnouncedBasicExample extends React.Component<
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
 
-    this._onItemInvoked = this._onItemInvoked.bind(this);
     this._onDeleteItem = this._onDeleteItem.bind(this);
+    this._onRenderRow = this._onRenderRow.bind(this);
 
     this.state = {
       items: _items,
@@ -125,7 +124,6 @@ export class AnnouncedBasicExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
             onRenderRow={this._onRenderRow}
           />
@@ -144,10 +142,6 @@ export class AnnouncedBasicExample extends React.Component<
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
     }
   }
-
-  public _onClick = (): void => {
-    // console.log('hello');
-  };
 
   public _onRenderRow(props: IDetailsRowProps): JSX.Element {
     const eventMap = [
@@ -183,7 +177,6 @@ export class AnnouncedBasicExample extends React.Component<
                   {
                     key: 'delete',
                     text: 'Delete'
-                    // onClick: this._onClick
                   },
                   {
                     key: 'rename',
@@ -210,15 +203,6 @@ export class AnnouncedBasicExample extends React.Component<
         return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
       default:
         return `${selectionCount} items selected`;
-    }
-  }
-
-  private _onItemInvoked(item: any, index: number, ev: Event): void {
-    if (ev instanceof KeyboardEvent && ev.code === 'Enter') {
-      console.log('Pressed enter');
-      // this.setState(prevState => ({
-      //   items: prevState.items.filter(el => el != index)
-      // }));
     }
   }
 }
