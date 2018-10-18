@@ -58,7 +58,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
     return (
       <div>
-        <ProgressIndicator label="Loading photos" percentComplete={percentComplete} />
+        <ProgressIndicator label={percentComplete < 1 ? "Loading photos" : "Finished loading photos"} percentComplete={percentComplete} />
         <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
           {this.renderAnnounced()}
           {this.renderPhotos()}
