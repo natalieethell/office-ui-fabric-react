@@ -26,9 +26,12 @@ export const AnnouncedPageProps: IDocPageProps = {
   propertiesTablesSources: [
     require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')
   ],
-  overview: `The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences. It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing the completion status or progress of operation(s).
+  overview: `The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences.
+  It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing the
+  completion status or progress of operation(s).
 
-  Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of page sections that do not appear all at once, and appearance of search results.`,
+  Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of page
+  sections that do not appear all at once, and appearance of search results.`,
   bestPractices: '',
   dos: '',
   donts: '',

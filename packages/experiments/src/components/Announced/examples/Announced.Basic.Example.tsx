@@ -13,7 +13,13 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
-const _items: any[] = [];
+const _items: {
+  key: number,
+  name: string,
+  modifiedby: string,
+  modified: number,
+  filesize: string
+}[] = [];
 
 const _columns: IColumn[] = [
   {
@@ -97,7 +103,6 @@ export class AnnouncedBasicExample extends React.Component<
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
 
-    this._onDeleteItem = this._onDeleteItem.bind(this);
     this._onRenderRow = this._onRenderRow.bind(this);
 
     this.state = {
@@ -132,10 +137,6 @@ export class AnnouncedBasicExample extends React.Component<
     );
   }
 
-  public _onDeleteItem(item?: any, index?: number, event?: React.KeyboardEvent<HTMLElement>): void {
-    console.log('delete item');
-  }
-
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
@@ -144,14 +145,7 @@ export class AnnouncedBasicExample extends React.Component<
   }
 
   public _onRenderRow(props: IDetailsRowProps): JSX.Element {
-    const eventMap = [
-      {
-        eventName: 'delete',
-        callback: (item?: any, index?: number, event?: React.KeyboardEvent<HTMLElement>) => this._onDeleteItem()
-      }
-    ];
-
-    return <DetailsRow {...props} eventsToRegister={eventMap} />;
+    return <DetailsRow {...props} />;
   }
 
   public _onRenderItemColumn(item: any, index: number, column: IColumn) {

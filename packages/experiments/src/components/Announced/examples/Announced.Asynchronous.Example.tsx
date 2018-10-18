@@ -5,21 +5,26 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import './Announced.Example.scss';
+import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 
 export interface IAnnouncedAsynchronousExampleState {
   photos: { url: string; width: number; height: number }[];
   total: number;
   seconds: number;
   announced: JSX.Element;
+  percentComplete: number;
 }
 
-export interface IAnnouncedAsynchronousExampleProps {}
+export interface IAnnouncedAsynchronousExampleProps { }
 
 /**
  * TODO: announce when focusing on a section that hasn't loaded yet
  */
 export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsynchronousExampleProps, IAnnouncedAsynchronousExampleState> {
   private _root = createRef<HTMLElement>();
+  private timer: number;
+  private increaseTotal: number;
+  private delay: number;
 
   constructor(props: {}) {
     super(props);
@@ -27,7 +32,8 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
       photos: this.createPhotos(),
       total: 0,
       seconds: 0,
-      announced: <Announced message="" />
+      announced: <Announced message="" />,
+      percentComplete: 0
     };
 
     this.renderPhotos = this.renderPhotos.bind(this);
@@ -47,37 +53,45 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     this.delay = 10;
   }
 
-  private timer: number;
-  private increaseTotal: number;
-  private delay: number;
-
   public render(): JSX.Element {
-    const { total } = this.state;
+    const { percentComplete } = this.state;
 
     return (
-      <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
-        {this.renderAnnounced(total)}
-        {this.renderPhotos(total)}
-      </FocusZone>
+      <div>
+        <ProgressIndicator label="Loading photos" percentComplete={percentComplete} />
+        <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
+          {this.renderAnnounced()}
+          {this.renderPhotos()}
+        </FocusZone>
+      </div>
     );
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     clearTimeout(this.timer);
     clearTimeout(this.increaseTotal);
   }
 
-  public renderAnnounced(num: number): JSX.Element {
-    if (this.state.seconds % this.delay === 0) {
+  public componentDidUpdate(): void {
+    const percentComplete = this.state.total / this.state.photos.length;
+    if (percentComplete !== this.state.percentComplete) {
+      this.setState({ percentComplete: percentComplete });
+    }
+  }
+
+  public renderAnnounced(): JSX.Element {
+    const { seconds, total, photos } = this.state;
+
+    if (seconds % this.delay === 0) {
       // update after an amount of time specified by delay
-      const result = <Announced message={`${num}/${this.state.photos.length} photos loaded`} id={'announced-' + num} />;
+      const result = <Announced message={`${total}/${photos.length} photos loaded`} id={'announced-' + total} />;
       return result;
     }
     return this.state.announced;
   }
 
   public createPhotos(): { url: string; width: number; height: number }[] {
-    const result = createArray(20, () => {
+    const result = createArray(30, () => {
       return {
         url: `http://placehold.it/100x100`,
         width: 100,
@@ -97,7 +111,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     }
   }
 
-  public renderPhotos(total: number): JSX.Element[] {
+  public renderPhotos(): JSX.Element[] {
     const result = this.state.photos.map((photo: { url: string; width: number; height: number }, index: number) => (
       <ul
         key={index}
@@ -109,11 +123,11 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         ref={this._root}
         onFocus={this.onFocusPhotoCell}
       >
-        {total > index ? (
+        {this.state.total > index ? (
           <Image src={photo.url} width={photo.width} height={photo.height} />
         ) : (
-          <Spinner size={SpinnerSize.small} style={{ width: 100, height: 100 }} />
-        )}
+            <div />
+          )}
       </ul>
     ));
 
