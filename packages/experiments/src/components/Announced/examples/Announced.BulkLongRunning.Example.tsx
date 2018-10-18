@@ -7,15 +7,10 @@ import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
 
+/* tslint:disable:no-any */
 let _draggedItem: any = null;
-let _draggedIndex: number = -1;
-const _items: {
-  key: number,
-  name: string,
-  modified: number,
-  modifiedby: string,
-  filesize: string
-}[] = [];
+let _draggedIndex = -1;
+const _items: any[] = [];
 
 let _columns: IColumn[] = [
   {
@@ -69,13 +64,7 @@ const _names: string[] = [
 export class AnnouncedBulkLongRunningExample extends React.Component<
   {},
   {
-    items: {
-      key: number,
-      name: string,
-      modified: number,
-      modifiedby: string,
-      filesize: string
-    }[];
+    items: {}[];
     selectionDetails?: string;
     columns: IColumn[];
     numberOfItems: number;
@@ -148,90 +137,36 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
       canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
         return true;
       },
-      canDrag: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }) => {
+      canDrag: (item?: any) => {
         return true;
       },
-      onDragEnter: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }, event?: DragEvent) => {
+      onDragEnter: (item?: any, event?: DragEvent) => {
         return 'dragEnter';
       }, // return string is the css classes that will be added to the entering element.
-      onDragLeave: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }, event?: DragEvent) => {
+      onDragLeave: (item?: any, event?: DragEvent) => {
         return;
       },
-      onDrop: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }, event?: DragEvent) => {
+      onDrop: (item?: any, event?: DragEvent) => {
         if (_draggedItem) {
           this._insertBeforeItem(item);
         }
       },
-      onDragStart: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }, itemIndex?: number, selectedItems?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }[], event?: MouseEvent) => {
+      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
         _draggedItem = item;
         _draggedIndex = itemIndex!;
       },
-      onDragEnd: (item?: {
-        key: number,
-        name: string,
-        modified: number,
-        modifiedby: string,
-        filesize: string
-      }, event?: DragEvent) => {
+      onDragEnd: (item?: any, event?: DragEvent) => {
         _draggedItem = null;
         _draggedIndex = -1;
       }
     };
   }
 
-  private _onItemInvoked(item: {
-    key: number,
-    name: string,
-    modified: number,
-    modifiedby: string,
-    filesize: string
-  }): void {
+  private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _onRenderItemColumn(item: {
-    key: number,
-    name: string,
-    modified: number,
-    modifiedby: string,
-    filesize: string
-  }, index: number, column: IColumn): JSX.Element {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
     if (column.key === 'name') {
       return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
     }
@@ -239,32 +174,12 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     return item[column.key];
   }
 
-  private _insertBeforeItem(item: {
-    key: number,
-    name: string,
-    modified: number,
-    modifiedby: string,
-    filesize: string
-  } | undefined): void {
+  private _insertBeforeItem(item: any): void {
     const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    const items: {
-      key: number,
-      name: string,
-      modified: number,
-      modifiedby: string,
-      filesize: string
-    }[] = this.state.items.filter((i: {
-      key: number,
-      name: string,
-      modified: number,
-      modifiedby: string,
-      filesize: string
-    }) => draggedItems.indexOf(i) === -1);
-    let insertIndex = -1;
-    if (item) {
-      insertIndex = items.indexOf(item);
-    }
+    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    let insertIndex = items.indexOf(item);
+
     // if dragging/dropping on itself, index will be 0.
     if (insertIndex === -1) {
       insertIndex = 0;

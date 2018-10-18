@@ -82,6 +82,7 @@ export class AnnouncedSearchResultsExample extends React.Component<IAnnouncedSea
     }
   }
 
+  // tslint:disable-next-line:no-any
   private _getTextFromItem(item: any): any {
     return item.name;
   }
