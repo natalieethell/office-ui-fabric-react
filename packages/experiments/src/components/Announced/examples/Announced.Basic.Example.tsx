@@ -144,11 +144,11 @@ export class AnnouncedBasicExample extends React.Component<
     }
   }
 
-  public _onRenderRow(props: IDetailsRowProps): JSX.Element {
+  private _onRenderRow(props: IDetailsRowProps): JSX.Element {
     return <DetailsRow {...props} />;
   }
 
-  public _onRenderItemColumn(item: any, index: number, column: IColumn) {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
     const fieldContent = item[column.fieldName || ''];
 
     switch (column.key) {
