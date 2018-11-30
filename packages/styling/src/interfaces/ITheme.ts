@@ -29,10 +29,7 @@ export interface IScheme {
   disableGlobalClassNames: boolean;
 
   /**
-   * @internal
-   * The font property is still in an experimental phase. The intent is to have it
-   * eventually replace IFontStyles in a future release, but it is still undergoing review.
-   * Avoid using it until it is finalized.
+   * UI Fabric fonts
    */
   font: IFont;
 

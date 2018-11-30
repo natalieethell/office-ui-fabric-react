@@ -7709,6 +7709,19 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 }
 
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+interface IFont {
+  // (undocumented)
+  families: IFontFamilies;
+  // (undocumented)
+  sizes: IFontSizes;
+  // (undocumented)
+  variants: IFontVariants;
+  // (undocumented)
+  weights: IFontWeights;
+}
+
 // @public
 interface IFontFace extends IRawFontStyle {
   fontFeatureSettings?: string;
@@ -7716,38 +7729,45 @@ interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontFamilies {
   // (undocumented)
   default: string;
   // (undocumented)
+  header: string;
+  // (undocumented)
   monospace: string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public (undocumented)
 interface IFontSizes {
+  // WARNING: The name "100" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  large: string;
+  100: string;
+  // WARNING: The name "110" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  medium: string;
+  110: string;
+  // WARNING: The name "120" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mediumPlus: string;
+  120: string;
+  // WARNING: The name "130" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mega: string;
+  130: string;
+  // WARNING: The name "150" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mini: string;
+  150: string;
+  // WARNING: The name "180" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  small: string;
+  180: string;
+  // WARNING: The name "210" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  smallPlus: string;
+  210: string;
+  // WARNING: The name "80" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  xLarge: string;
+  80: string;
+  // WARNING: The name "90" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  xSmall: string;
-  // (undocumented)
-  xxLarge: string;
+  90: string;
 }
 
 // @public
@@ -7814,13 +7834,10 @@ interface IFontVariants {
   link: Partial<IFontVariant>;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontWeights {
   // (undocumented)
   bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
   // (undocumented)
   light: IFontWeight;
   // (undocumented)
@@ -9573,6 +9590,7 @@ interface IRGB {
 // @public (undocumented)
 interface IScheme {
   disableGlobalClassNames: boolean;
+  font: IFont;
   // (undocumented)
   fonts: IFontStyles;
   // (undocumented)
@@ -9584,9 +9602,6 @@ interface IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public (undocumented)
@@ -10924,19 +10939,6 @@ interface ITooltipStyles {
   content: IStyle;
   root: IStyle;
   subText: IStyle;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface ITypography {
-  // (undocumented)
-  families: IFontFamilies;
-  // (undocumented)
-  sizes: IFontSizes;
-  // (undocumented)
-  variants: IFontVariants;
-  // (undocumented)
-  weights: IFontWeights;
 }
 
 // @public (undocumented)

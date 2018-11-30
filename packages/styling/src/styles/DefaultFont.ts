@@ -24,7 +24,7 @@ export const DefaultFontSizes: IFontSizes = {
 export const DefaultFontFamilies: IFontFamilies = {
   default: DefaultFontStyles.medium.fontFamily!,
   // TODO: come up with default
-  header: DefaultFontStyles.medium.fontFamily!,
+  header: DefaultFontStyles.xLarge.fontFamily!,
   monospace: 'Menlo, Monaco, "Courier New", monospace'
 };
 
