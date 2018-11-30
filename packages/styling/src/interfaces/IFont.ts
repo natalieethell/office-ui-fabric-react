@@ -2,34 +2,40 @@ import { IFontWeight } from '../MergeStyles';
 import { ISemanticTextColors } from './ISemanticTextColors';
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * Font families
  */
 export interface IFontFamilies {
   default: string;
+  header: string;
   monospace: string;
 }
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * Font sizes
  */
 export interface IFontSizes {
-  mini: string;
-  xSmall: string;
-  small: string;
-  smallPlus: string;
-  medium: string;
-  mediumPlus: string;
-  large: string;
-  xLarge: string;
-  xxLarge: string;
-  mega: string;
+  // 70: string;
+  80: string;
+  90: string;
+  100: string;
+  110: string;
+  120: string;
+  130: string;
+  // 140: string;
+  150: string;
+  // 160: string;
+  // 170: string;
+  180: string;
+  // 190: string;
+  // 200: string;
+  210: string;
+  // 220: string;
 }
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * Font weights
  */
 export interface IFontWeights {
-  default: IFontWeight;
   light: IFontWeight;
   regular: IFontWeight;
   semibold: IFontWeight;
@@ -65,7 +71,7 @@ export interface IFontVariants {
 /**
  * @internal This is an experimental interface and will be changed post design review.
  */
-export interface ITypography {
+export interface IFont {
   families: IFontFamilies;
   sizes: IFontSizes;
   weights: IFontWeights;
@@ -73,6 +79,6 @@ export interface ITypography {
 }
 
 /**
- * Used in IPartialTheme so that user-defined themes can override selected typography properties
+ * Used in IPartialTheme so that user-defined themes can override selected font properties
  */
-export type IPartialTypography = { [P in keyof ITypography]?: Partial<ITypography[P]> };
+export type IPartialFont = { [P in keyof IFont]?: Partial<IFont[P]> };

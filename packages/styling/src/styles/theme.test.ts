@@ -1,6 +1,6 @@
 import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, createTheme } from './theme';
-import { DefaultTypography } from './DefaultTypography';
-import { IPartialTheme, ITypography } from '../interfaces/index';
+import { DefaultFont } from './DefaultFont';
+import { IPartialTheme, IFont } from '../interfaces/index';
 
 describe('registerOnThemeChangeCallback', () => {
   let callback = jest.fn();
@@ -33,14 +33,14 @@ describe('registerOnThemeChangeCallback', () => {
   });
 });
 
-describe('theme.typography', () => {
+describe('theme.font', () => {
   it('expands sizes', () => {
     const userTheme: IPartialTheme = {
-      typography: {
+      font: {
         variants: {
           default: {
             family: 'monospace',
-            size: 'small',
+            size: '90',
             weight: 'bold',
             color: 'link'
           }
@@ -50,30 +50,30 @@ describe('theme.typography', () => {
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.size).toEqual(DefaultTypography.sizes.small);
+    expect(newTheme.font.variants.default.size).toEqual(DefaultFont.sizes['90']);
   });
 
   it('updates the variants when sizes are adjusted', () => {
     const userTheme = {
-      typography: {
+      font: {
         sizes: {
-          [DefaultTypography.variants.default.size!]: '100px'
+          [DefaultFont.variants.default.size!]: '100px'
         }
       }
     } as IPartialTheme;
 
     const newTheme = createTheme(userTheme);
 
-    expect(newTheme.typography.variants.default.size).toEqual('100px');
+    expect(newTheme.font.variants.default.size).toEqual('100px');
   });
 
-  it('does not modify DefaultTypography when given a theme with no typography', () => {
-    const previousDefault = { ...DefaultTypography };
+  it('does not modify DefaultFont when given a theme with no font', () => {
+    const previousDefault = { ...DefaultFont };
     const newTheme = createTheme({
       palette: {
         themePrimary: '#ff0000'
       }
     });
-    expect(DefaultTypography).toEqual(previousDefault);
+    expect(DefaultFont).toEqual(previousDefault);
   });
 });

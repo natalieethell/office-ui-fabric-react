@@ -1,7 +1,7 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography, IPartialTypography } from './ITypography';
+import { IFont, IPartialFont } from './IFont';
 import { ISpacing } from './ISpacing';
 
 /**
@@ -30,11 +30,11 @@ export interface IScheme {
 
   /**
    * @internal
-   * The typography property is still in an experimental phase. The intent is to have it
+   * The font property is still in an experimental phase. The intent is to have it
    * eventually replace IFontStyles in a future release, but it is still undergoing review.
    * Avoid using it until it is finalized.
    */
-  typography: ITypography;
+  font: IFont;
 
   /**
    * @internal
@@ -61,4 +61,4 @@ export type IPartialTheme = {
     'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes'
   >]?: Partial<ITheme[P]>
 } &
-  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
+  { [P in keyof Pick<ITheme, 'font'>]?: IPartialFont };
