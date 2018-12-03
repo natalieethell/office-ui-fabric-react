@@ -43,6 +43,7 @@ function updateApi() {
     console.log(cyan, `- Update API: successfully updated ${apiFileName}, verifying the updates...`);
     verifyApi();
   } catch (ex) {
+    console.log(cyan, `Exception: ${ex}`);
     console.error(red, `- Update API: failed to update ${apiFileName}.`);
   }
 }
