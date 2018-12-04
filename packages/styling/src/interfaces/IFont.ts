@@ -14,22 +14,22 @@ export interface IFontFamilies {
  * Font sizes
  */
 export interface IFontSizes {
-  // 70: string;
+  70?: string;
   80: string;
   90: string;
   100: string;
   110: string;
   120: string;
   130: string;
-  // 140: string;
+  140?: string;
   150: string;
-  // 160: string;
-  // 170: string;
+  160?: string;
+  170?: string;
   180: string;
-  // 190: string;
-  // 200: string;
+  190?: string;
+  200?: string;
   210: string;
-  // 220: string;
+  220?: string;
 }
 
 /**

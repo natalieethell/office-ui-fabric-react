@@ -4,22 +4,22 @@ import { IFontFamilies, IFontSizes, IFontWeights, IFontVariants, IFont } from '.
 import { getLanguage } from '@uifabric/utilities';
 
 export const DefaultFontSizes: IFontSizes = {
-  // 70: '',
+  // 70
   80: FontSizes.mini,
   90: FontSizes.small,
   100: FontSizes.medium,
   110: FontSizes.mediumPlus,
   120: FontSizes.large,
   130: FontSizes.xLarge,
-  // 140: '',
+  // 140
   150: FontSizes.xxLarge,
-  // 160: '',
-  // 170: '',
+  // 160
+  // 170
   180: FontSizes.superLarge,
-  // 190: '',
-  // 200: '',
+  // 190
+  // 200
   210: FontSizes.mega
-  // 220: ''
+  // 220
 };
 
 export const DefaultFontFamilies: IFontFamilies = {
