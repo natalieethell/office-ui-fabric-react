@@ -18,15 +18,15 @@ const Variants: ISetting<keyof IFontVariants>[] = [
 ];
 
 const Sizes: ISetting<keyof IFontSizes>[] = [
-  { name: 80, usage: 'usage here.' },
-  { name: 90, usage: 'usage here.' },
-  { name: 100, usage: 'usage here.' },
-  { name: 110, usage: 'usage here.' },
-  { name: 120, usage: 'usage here.' },
-  { name: 130, usage: 'usage here.' },
-  { name: 150, usage: 'usage here.' },
-  { name: 180, usage: 'usage here.' },
-  { name: 210, usage: 'usage here.' }
+  { name: '80', usage: 'usage here.' },
+  { name: '90', usage: 'usage here.' },
+  { name: '100', usage: 'usage here.' },
+  { name: '110', usage: 'usage here.' },
+  { name: '120', usage: 'usage here.' },
+  { name: '130', usage: 'usage here.' },
+  { name: '150', usage: 'usage here.' },
+  { name: '180', usage: 'usage here.' },
+  { name: '210', usage: 'usage here.' }
 ];
 
 const Weights: ISetting<keyof IFontWeights>[] = [
