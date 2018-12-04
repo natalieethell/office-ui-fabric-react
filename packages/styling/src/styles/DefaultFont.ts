@@ -23,8 +23,7 @@ export const DefaultFontSizes: IFontSizes = {
 
 export const DefaultFontFamilies: IFontFamilies = {
   default: DefaultFontStyles.medium.fontFamily!,
-  // TODO: come up with default
-  header: DefaultFontStyles.xLarge.fontFamily!,
+  header: 'Segoe UI',
   monospace: 'Menlo, Monaco, "Courier New", monospace'
 };
 
