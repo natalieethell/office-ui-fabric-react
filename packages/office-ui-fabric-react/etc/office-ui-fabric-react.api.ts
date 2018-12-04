@@ -7709,8 +7709,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFont {
   // (undocumented)
   families: IFontFamilies;
@@ -7753,15 +7752,36 @@ interface IFontSizes {
   // WARNING: The name "130" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
   130: string;
+  // WARNING: The name "140" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  140?: string;
   // WARNING: The name "150" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
   150: string;
+  // WARNING: The name "160" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  160?: string;
+  // WARNING: The name "170" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  170?: string;
   // WARNING: The name "180" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
   180: string;
+  // WARNING: The name "190" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  190?: string;
+  // WARNING: The name "200" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  200?: string;
   // WARNING: The name "210" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
   210: string;
+  // WARNING: The name "220" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  220?: string;
+  // WARNING: The name "70" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  70?: string;
   // WARNING: The name "80" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
   80: string;
@@ -7796,42 +7816,26 @@ interface IFontStyles {
   xxLarge: IRawStyle;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontVariant {
   // (undocumented)
   color?: keyof ISemanticTextColors;
   // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
   family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
   // (undocumented)
   size: keyof IFontSizes | number | string;
   // (undocumented)
-  weight: keyof IFontWeights | number;
+  weight: keyof IFontWeights | IFontWeight | number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
   // (undocumented)
   default: Partial<IFontVariant>;
   // (undocumented)
-  h1: Partial<IFontVariant>;
+  header: Partial<IFontVariant>;
   // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
+  metadata: Partial<IFontVariant>;
 }
 
 // @public
