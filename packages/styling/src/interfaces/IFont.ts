@@ -43,33 +43,26 @@ export interface IFontWeights {
 }
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * Interface for font variant
  */
 export interface IFontVariant {
   family: keyof IFontFamilies | string;
   size: keyof IFontSizes | number | string;
-  weight: keyof IFontWeights | number;
+  weight: keyof IFontWeights | IFontWeight | number;
   color?: keyof ISemanticTextColors;
-  hoverColor?: keyof ISemanticTextColors;
-  disabledColor?: keyof ISemanticTextColors;
 }
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * Font variants
  */
 export interface IFontVariants {
   default: Partial<IFontVariant>;
-  caption: Partial<IFontVariant>;
-  link: Partial<IFontVariant>;
-  h1: Partial<IFontVariant>;
-  h2: Partial<IFontVariant>;
-  h3: Partial<IFontVariant>;
-  h4: Partial<IFontVariant>;
-  h5: Partial<IFontVariant>;
+  metadata: Partial<IFontVariant>;
+  header: Partial<IFontVariant>;
 }
 
 /**
- * @internal This is an experimental interface and will be changed post design review.
+ * UI Fabric font set
  */
 export interface IFont {
   families: IFontFamilies;

@@ -1,5 +1,5 @@
 import { IRawStyle, IFontWeight } from '@uifabric/merge-styles';
-import { IFontStyles } from '../interfaces/index';
+import { IFontStyles, IFontVariants, IFontVariant } from '../interfaces/index';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
@@ -131,6 +131,25 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
   return fontStyles;
 }
 
+export function createFonts(localeCode: string | null): IFontVariants {
+  const localizedFont = _getLocalizedFontFamily(localeCode);
+  let fontFamilyWithFallback = _fontFamilyWithFallbacks(localizedFont);
+  let semilightFontFamilyWithFallback = fontFamilyWithFallback;
+
+  // Chrome has a bug where it does not render Segoe UI Semilight correctly, so we force the webfont to be used in that case
+  if (localizedFont === defaultFontFamily) {
+    semilightFontFamilyWithFallback = _fontFamilyWithFallbacks(LocalizedFontFamilies.WestEuropean);
+  }
+
+  const fontVariants = {
+    default: _createVariant(FontSizes.medium, FontWeights.regular, fontFamilyWithFallback),
+    metadata: _createVariant(FontSizes.small, FontWeights.regular, fontFamilyWithFallback),
+    header: _createVariant(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback)
+  };
+
+  return fontVariants;
+}
+
 /**
  * If there is a localized font for this language, return that. Returns undefined if there is no localized font for that language.
  */
@@ -152,5 +171,15 @@ function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRa
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
+  };
+}
+
+function _createVariant(size: string, weight: IFontWeight, fontFamily: string): IFontVariant {
+  return {
+    family: fontFamily,
+    // MozOsxFontSmoothing: 'grayscale',
+    // WebkitFontSmoothing: 'antialiased',
+    size: size,
+    weight: weight
   };
 }

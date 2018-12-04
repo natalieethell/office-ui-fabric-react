@@ -34,6 +34,7 @@ export const DefaultFontWeights: IFontWeights = {
   bold: FontWeights.bold
 };
 
+// TODO: use the original DefaultFontStyles for these
 export const DefaultFontVariants: IFontVariants = {
   default: {
     family: 'default',
