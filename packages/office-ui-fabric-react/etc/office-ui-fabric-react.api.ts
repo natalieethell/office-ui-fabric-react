@@ -12625,6 +12625,7 @@ module ZIndexes {
 // WARNING: Unsupported export: AnimationVariables
 // WARNING: Unsupported export: DefaultPalette
 // WARNING: Unsupported export: DefaultFontStyles
+// WARNING: Unsupported export: DefaultFont
 // WARNING: Unsupported export: hiddenContentStyle
 // WARNING: Unsupported export: PulsingBeaconAnimationStyles
 // WARNING: Unsupported export: GlobalClassNames

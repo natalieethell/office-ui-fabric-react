@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
 import { Text } from '@uifabric/experiments/lib/Text';
+import { DefaultFont } from '@uifabric/styling/lib/styles';
 
 import { lorem } from '@uifabric/example-app-base';
 
@@ -53,7 +54,7 @@ const ExampleFile = (props: IExampleFileProps) => {
   return (
     <div data-is-focusable="true" style={{ display: 'flex', alignItems: 'center', height: 24, paddingLeft: 4 + props.indent * 18 }}>
       <img src={props.iconSource} style={{ maxWidth: 16, padding: 6 }} />
-      <Text size="small">{props.filename}</Text>
+      <Text size={DefaultFont.sizes[90]}>{props.filename}</Text>
     </div>
   );
 };

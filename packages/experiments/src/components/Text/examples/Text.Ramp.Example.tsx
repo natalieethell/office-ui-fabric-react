@@ -13,30 +13,23 @@ interface ISetting<TType> {
 
 const Variants: ISetting<keyof IFontVariants>[] = [
   { name: 'default', usage: 'default' },
-  { name: 'caption', usage: 'caption' },
-  { name: 'h1', usage: 'h1' },
-  { name: 'h2', usage: 'h2' },
-  { name: 'h3', usage: 'h3' },
-  { name: 'h4', usage: 'h4' },
-  { name: 'h5', usage: 'h5' },
-  { name: 'link', usage: 'link' }
+  { name: 'metadata', usage: 'metadata' },
+  { name: 'header', usage: 'header' }
 ];
 
 const Sizes: ISetting<keyof IFontSizes>[] = [
-  { name: 'mini', usage: 'usage here.' },
-  { name: 'xSmall', usage: 'usage here.' },
-  { name: 'small', usage: 'usage here.' },
-  { name: 'smallPlus', usage: 'usage here.' },
-  { name: 'medium', usage: 'usage here.' },
-  { name: 'mediumPlus', usage: 'usage here.' },
-  { name: 'large', usage: 'usage here.' },
-  { name: 'xLarge', usage: 'usage here.' },
-  { name: 'xxLarge', usage: 'usage here.' },
-  { name: 'mega', usage: 'usage here.' }
+  { name: 80, usage: 'usage here.' },
+  { name: 90, usage: 'usage here.' },
+  { name: 100, usage: 'usage here.' },
+  { name: 110, usage: 'usage here.' },
+  { name: 120, usage: 'usage here.' },
+  { name: 130, usage: 'usage here.' },
+  { name: 150, usage: 'usage here.' },
+  { name: 180, usage: 'usage here.' },
+  { name: 210, usage: 'usage here.' }
 ];
 
 const Weights: ISetting<keyof IFontWeights>[] = [
-  { name: 'default', usage: '' },
   { name: 'light', usage: '' },
   { name: 'regular', usage: '' },
   { name: 'semibold', usage: '' },
@@ -71,7 +64,7 @@ type ITableComponent = IStatelessComponent<ITableProps, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => (
   <VerticalStack className={props.className} gap={20}>
-    <Text variant="h3">{props.title}</Text>
+    <Text variant="header">{props.title}</Text>
     <table className={props.classNames.table}>
       <thead>
         <tr className={props.classNames.header}>
