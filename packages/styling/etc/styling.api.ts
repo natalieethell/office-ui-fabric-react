@@ -215,44 +215,84 @@ module IconFontSizes {
 }
 
 // @public
+interface IFont {
+  // (undocumented)
+  families: IFontFamilies;
+  // (undocumented)
+  sizes: IFontSizes;
+  // (undocumented)
+  variants: IFontVariants;
+  // (undocumented)
+  weights: IFontWeights;
+}
+
+// @public
 interface IFontFace extends IRawFontStyle {
   fontFeatureSettings?: string;
   src?: string;
   unicodeRange?: ICSSRule | string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontFamilies {
   // (undocumented)
   default: string;
   // (undocumented)
+  header: string;
+  // (undocumented)
   monospace: string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public (undocumented)
 interface IFontSizes {
+  // WARNING: The name "100" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  large: string;
+  100: string;
+  // WARNING: The name "110" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  medium: string;
+  110: string;
+  // WARNING: The name "120" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mediumPlus: string;
+  120: string;
+  // WARNING: The name "130" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mega: string;
+  130: string;
+  // WARNING: The name "140" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  mini: string;
+  140?: string;
+  // WARNING: The name "150" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  small: string;
+  150: string;
+  // WARNING: The name "160" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  smallPlus: string;
+  160?: string;
+  // WARNING: The name "170" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  xLarge: string;
+  170?: string;
+  // WARNING: The name "180" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  xSmall: string;
+  180: string;
+  // WARNING: The name "190" contains unsupported characters; API names should use only letters, numbers, and underscores
   // (undocumented)
-  xxLarge: string;
+  190?: string;
+  // WARNING: The name "200" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  200?: string;
+  // WARNING: The name "210" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  210: string;
+  // WARNING: The name "220" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  220?: string;
+  // WARNING: The name "70" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  70?: string;
+  // WARNING: The name "80" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  80: string;
+  // WARNING: The name "90" contains unsupported characters; API names should use only letters, numbers, and underscores
+  // (undocumented)
+  90: string;
 }
 
 // @public
@@ -281,51 +321,32 @@ interface IFontStyles {
   xxLarge: IRawStyle;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontVariant {
   // (undocumented)
   color?: keyof ISemanticTextColors;
   // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
   family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
   // (undocumented)
   size: keyof IFontSizes | number | string;
   // (undocumented)
-  weight: keyof IFontWeights | number;
+  weight: keyof IFontWeights | IFontWeight | number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
   // (undocumented)
   default: Partial<IFontVariant>;
   // (undocumented)
-  h1: Partial<IFontVariant>;
+  header: Partial<IFontVariant>;
   // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
+  metadata: Partial<IFontVariant>;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
+// @public
 interface IFontWeights {
   // (undocumented)
   bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
   // (undocumented)
   light: IFontWeight;
   // (undocumented)
@@ -425,6 +446,7 @@ interface IRawStyle extends IRawStyleBase {
 // @public (undocumented)
 interface IScheme {
   disableGlobalClassNames: boolean;
+  font: IFont;
   // (undocumented)
   fonts: IFontStyles;
   // (undocumented)
@@ -436,9 +458,6 @@ interface IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public
@@ -563,19 +582,6 @@ interface ITheme extends IScheme {
   schemes?: {
           [P in ISchemeNames]?: IScheme;
       };
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface ITypography {
-  // (undocumented)
-  families: IFontFamilies;
-  // (undocumented)
-  sizes: IFontSizes;
-  // (undocumented)
-  variants: IFontVariants;
-  // (undocumented)
-  weights: IFontWeights;
 }
 
 // @public
