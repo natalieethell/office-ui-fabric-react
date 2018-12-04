@@ -123,8 +123,6 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
       variant.size = _expandFrom(variant.size, font.sizes);
       variant.weight = _expandFrom(variant.weight, font.weights);
       variant.color = _expandFrom(variant.color, newSemanticColors);
-      variant.hoverColor = _expandFrom(variant.hoverColor, newSemanticColors);
-      variant.disabledColor = _expandFrom(variant.disabledColor, newSemanticColors);
 
       variants[variantName] = variant;
     }
