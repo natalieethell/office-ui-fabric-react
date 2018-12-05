@@ -67,13 +67,13 @@ export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
 export * from './Sticky';
-export * from './Styling';
+// export * from './Styling';
 export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './TextField';
 export * from './ThemeGenerator';
 export * from './Toggle';
 export * from './Tooltip';
-export * from './Utilities';
+// export * from './Utilities';
 
 import './version';
