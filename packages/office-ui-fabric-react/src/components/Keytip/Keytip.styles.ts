@@ -1,6 +1,7 @@
 import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
-import { IStyleFunction, IPoint } from '../../Utilities';
+import { IPoint } from '../../Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
 import { mergeStyleSets, HighContrastSelector } from '../../Styling';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {

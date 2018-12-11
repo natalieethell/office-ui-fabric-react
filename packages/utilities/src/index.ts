@@ -16,7 +16,6 @@ export * from './IRectangle';
 export * from './IRenderComponent';
 export * from './IRenderFunction';
 export * from './ISize';
-export * from './IStyleFunction';
 export * from './KeyCodes';
 export * from './Rectangle';
 export * from './aria';

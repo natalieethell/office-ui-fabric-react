@@ -7,7 +7,17 @@ import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
 import { RectangleEdge } from '../../utilities/positioning';
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+
+/**
+ * Another name for {@link SelectableOptionMenuItemType}.
+ */
+export type DropdownMenuItemType = SelectableOptionMenuItemType;
+
+/**
+ * {@partOf DropdownMenuItemType}
+ */
+export const DropdownMenuItemType = SelectableOptionMenuItemType;
 
 export interface IDropdown {
   focus: (shouldOpenOnFocus?: boolean) => void;

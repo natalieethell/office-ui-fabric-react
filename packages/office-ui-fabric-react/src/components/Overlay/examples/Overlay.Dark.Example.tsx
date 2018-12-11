@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IStyleFunction, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Overlay } from '../Overlay';
 import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';

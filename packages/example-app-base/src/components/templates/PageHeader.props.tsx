@@ -1,4 +1,5 @@
-import { IBaseProps, IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 /**

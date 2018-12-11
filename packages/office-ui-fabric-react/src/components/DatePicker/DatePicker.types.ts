@@ -2,7 +2,8 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
+import { IRefObject, IBaseProps, IComponentAs } from '../../Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
 import { ICalloutProps } from '../../Callout';
 
 export interface IDatePicker {

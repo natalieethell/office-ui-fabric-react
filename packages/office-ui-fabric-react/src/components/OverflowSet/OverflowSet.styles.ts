@@ -1,5 +1,5 @@
 import { IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyle } from '../../Styling';
 
 const overflowItemStyle: IStyle = {

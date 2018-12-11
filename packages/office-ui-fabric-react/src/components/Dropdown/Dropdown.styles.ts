@@ -1,5 +1,5 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction } from '@uifabric/merge-styles';
 import { FontSizes, FontWeights, HighContrastSelector, IRawStyle, IStyle, getGlobalClassNames, normalize } from '../../Styling';
 
 const GlobalClassNames = {
