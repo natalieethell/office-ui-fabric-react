@@ -89,6 +89,21 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   return _theme;
 }
 
+export function _loadFonts(): string[] {
+  const lines: string[] = [];
+  const defaultFontStyles = DefaultFontStyles;
+
+  for (const fontName of Object.keys(defaultFontStyles)) {
+    const font = defaultFontStyles[fontName];
+    for (const propName of Object.keys(font)) {
+      const name = 'ms-font-' + fontName + '-' + propName;
+      lines.push(`$${name}: '[theme:${name}, default: ${font[propName]}]'`);
+    }
+  }
+  console.log(lines.join('\n'));
+  return lines;
+}
+
 /**
  * Creates a custom theme definition which can be used with the Customizer.
  * @param theme - Partial theme object.
