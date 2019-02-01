@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ActionButton } from '../../Button';
+import { ActionButton, IBaseButtonStyleProps, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import { buttonStyles } from './Nav.styles';
 import { INav, INavProps, INavLinkGroup, INavLink, INavStyles, INavStyleProps } from './Nav.types';
@@ -119,15 +119,22 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     return (
       <LinkAs
-        className={classNames.link}
+        className={!link.disabled ? classNames.link : undefined}
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon || '' }}
-        onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
+        onClick={
+          !link.disabled
+            ? link.onClick
+              ? this._onNavButtonLinkClicked.bind(this, link)
+              : this._onNavAnchorLinkClicked.bind(this, link)
+            : undefined
+        }
         title={link.title || link.name}
         target={link.target}
         rel={rel}
         aria-label={link.ariaLabel}
+        disabled={link.disabled}
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
