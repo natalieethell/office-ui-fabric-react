@@ -12,7 +12,8 @@ export class IconImageSheetExample extends React.Component<any, any> {
           className={'ms-IconImageSheetExample-one'}
           imageProps={{
             src: TestImages.iconOne,
-            className: 'ms-IconImageSheetExample-one-image'
+            className: 'ms-IconImageSheetExample-one-image',
+            alt: 'OneNote'
           }}
         />
         <Icon
@@ -20,7 +21,8 @@ export class IconImageSheetExample extends React.Component<any, any> {
           className={'ms-IconImageSheetExample-check'}
           imageProps={{
             src: TestImages.iconOne,
-            className: 'ms-IconImageSheetExample-check-image'
+            className: 'ms-IconImageSheetExample-check-image',
+            alt: 'check'
           }}
         />
         <Icon
@@ -28,7 +30,8 @@ export class IconImageSheetExample extends React.Component<any, any> {
           className={'ms-IconImageSheetExample-lock'}
           imageProps={{
             src: TestImages.iconOne,
-            className: 'ms-IconImageSheetExample-lock-image'
+            className: 'ms-IconImageSheetExample-lock-image',
+            alt: 'lock'
           }}
         />
       </div>
