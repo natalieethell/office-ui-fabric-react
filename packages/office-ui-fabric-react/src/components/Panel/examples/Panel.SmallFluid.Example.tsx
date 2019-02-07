@@ -28,6 +28,7 @@ export class PanelSmallFluidExample extends React.Component<
           // tslint:disable-next-line:jsx-no-lambda
           onDismiss={() => this.setState({ showPanel: false })}
           headerText="Panel - Small, right-aligned, fixed"
+          closeButtonAriaLabel="Close"
         >
           <span>Content goes here.</span>
         </Panel>

@@ -28,6 +28,7 @@ export class PanelLargeExample extends React.Component<
           onDismiss={() => this.setState({ showPanel: false })}
           type={PanelType.large}
           headerText="Large Panel"
+          closeButtonAriaLabel="Close"
         >
           <span>Content goes here.</span>
         </Panel>

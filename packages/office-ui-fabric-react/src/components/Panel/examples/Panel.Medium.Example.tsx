@@ -17,7 +17,13 @@ export class PanelMediumExample extends React.Component<
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._setShowPanel(true)} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} onDismiss={this._setShowPanel(false)} type={PanelType.medium} headerText="Medium Panel">
+        <Panel
+          isOpen={this.state.showPanel}
+          onDismiss={this._setShowPanel(false)}
+          type={PanelType.medium}
+          headerText="Medium Panel"
+          closeButtonAriaLabel="Close"
+        >
           <span>Content goes here.</span>
         </Panel>
       </div>

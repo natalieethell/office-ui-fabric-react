@@ -30,6 +30,7 @@ export class PanelPreventDefaultExample extends React.Component<{}, IPanelPreven
           // tslint:disable-next-line:jsx-no-lambda
           onDismiss={this.onDismiss}
           headerText="Panel"
+          closeButtonAriaLabel="Close"
         >
           <div>Hitting escape inside the text area will not close the Panel</div>
           <textarea onKeyDown={this.onKeyDown} />

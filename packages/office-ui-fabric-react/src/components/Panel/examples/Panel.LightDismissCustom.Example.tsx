@@ -24,6 +24,7 @@ export class PanelLightDismissCustomExample extends React.Component<
           isOpen={this.state.showPanel}
           isLightDismiss={true}
           headerText="Light Dismiss Panel"
+          closeButtonAriaLabel="Close"
           onDismiss={this._hidePanel}
           onLightDismissClick={this._showDialog}
         >

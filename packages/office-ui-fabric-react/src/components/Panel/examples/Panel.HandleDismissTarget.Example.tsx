@@ -25,6 +25,7 @@ export class PanelHandleDismissTargetExample extends React.Component<
         />
         <Panel
           headerText="Panel - Handle close button clicks or light dismissal"
+          closeButtonAriaLabel="Close"
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedNear}
           isFooterAtBottom={true}
