@@ -7,7 +7,8 @@ import {
   FontSizes,
   FontWeights,
   ZIndexes,
-  getGlobalClassNames
+  getGlobalClassNames,
+  HighContrastSelector
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -15,6 +16,7 @@ const GlobalClassNames = {
   linkText: 'ms-Nav-linkText',
   compositeLink: 'ms-Nav-compositeLink',
   link: 'ms-Nav-link',
+  disabled: 'is-disabled',
   chevronButton: 'ms-Nav-chevronButton',
   chevronIcon: 'ms-Nav-chevron',
   navItem: 'ms-Nav-navItem',
@@ -35,12 +37,22 @@ export const buttonStyles: IButtonStyles = {
   }
 };
 
+const buttonHighContrastFocus = {
+  left: -2,
+  top: -2,
+  bottom: -2,
+  right: -2,
+  border: 'none',
+  outlineColor: 'ButtonText'
+};
+
 export const getStyles = (props: INavStyleProps): INavStyles => {
   const {
     className,
     theme,
     isOnTop,
     isExpanded,
+    isDisabled,
     isGroup,
     isLink,
     isSelected,
@@ -71,6 +83,23 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           position: 'absolute'
         },
         AnimationClassNames.slideRightIn40
+      ],
+      isDisabled && [
+        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        {
+          backgroundColor: semanticColors.disabledBackground,
+          color: semanticColors.disabledText,
+          cursor: 'default',
+          pointerEvents: 'none',
+          selectors: {
+            ':hover': { outline: 0 },
+            ':focus': { outline: 0 },
+            [HighContrastSelector]: {
+              color: 'grayText',
+              borderColor: 'grayText'
+            }
+          }
+        }
       ]
     ],
     linkText: [
@@ -108,7 +137,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         paddingLeft: leftPadding,
-        paddingRight: rightPadding,
+        paddingRight: rightPadding
+      },
+      !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
@@ -116,25 +147,27 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           }
         }
       },
-      isSelected && {
-        color: palette.themePrimary,
-        backgroundColor: palette.neutralLighter,
-        selectors: {
-          '&:after': {
-            borderLeft: `2px solid ${palette.themePrimary}`,
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            pointerEvents: 'none'
+      !isDisabled &&
+        isSelected && {
+          color: palette.themePrimary,
+          backgroundColor: palette.neutralLighter,
+          selectors: {
+            '&:after': {
+              borderLeft: `2px solid ${palette.themePrimary}`,
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              pointerEvents: 'none'
+            }
           }
+        },
+      !isDisabled &&
+        isButtonEntry && {
+          color: palette.themePrimary
         }
-      },
-      isButtonEntry && {
-        color: palette.themePrimary
-      }
     ],
     chevronButton: [
       classNames.chevronButton,
@@ -153,7 +186,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         overflow: 'hidden',
         cursor: 'pointer',
         color: semanticColors.bodyText,
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent'
+      },
+      !isDisabled && {
         selectors: {
           '&:visited': {
             color: 'inherit'

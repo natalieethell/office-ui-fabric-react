@@ -31,7 +31,8 @@ export class NavBasicExample extends React.Component<any, any> {
                       key: 'key2'
                     }
                   ],
-                  isExpanded: true
+                  isExpanded: true,
+                  disabled: true
                 },
                 { name: 'Documents', url: 'http://example.com', key: 'key3', isExpanded: true },
                 { name: 'Pages', url: 'http://msn.com', key: 'key4' },

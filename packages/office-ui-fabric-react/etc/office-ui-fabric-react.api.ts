@@ -8940,6 +8940,7 @@ interface INavStyleProps {
   groups: INavLinkGroup[] | null;
   // (undocumented)
   isButtonEntry?: boolean;
+  isDisabled?: boolean;
   isExpanded?: boolean;
   isGroup?: boolean;
   isLink?: boolean;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ActionButton, IBaseButtonStyleProps, IButtonStyles } from '../../Button';
+import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { buttonStyles } from './Nav.styles';
 import { INav, INavProps, INavLinkGroup, INavLink, INavStyles, INavStyleProps } from './Nav.types';
@@ -109,6 +109,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
+      isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
       leftPadding: _indentationSize * nestingLevel + _baseIndent,
       groups
@@ -119,7 +120,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     return (
       <LinkAs
-        className={!link.disabled ? classNames.link : undefined}
+        className={classNames.link}
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon || '' }}

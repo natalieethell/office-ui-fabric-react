@@ -271,6 +271,11 @@ export interface INavStyleProps {
   isSelected?: boolean;
 
   /**
+   * is element disabled boolean
+   */
+  isDisabled?: boolean;
+
+  /**
    * is button
    */
   isButtonEntry?: boolean;
