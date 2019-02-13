@@ -33,7 +33,10 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     return (
       <div className="ms-TeachingBubbleExample">
         <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
-          <DefaultButton onClick={this._onDismiss} text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'} />
+          <DefaultButton
+            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+          />
         </span>
         {isTeachingBubbleVisible ? (
           <div>
@@ -54,7 +57,13 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
+      isTeachingBubbleVisible: false
+    });
+  }
+
+  private _onShow(ev: any): void {
+    this.setState({
+      isTeachingBubbleVisible: true
     });
   }
 }
