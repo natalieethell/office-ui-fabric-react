@@ -13,6 +13,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
       isTeachingBubbleVisible: false

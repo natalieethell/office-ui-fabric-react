@@ -15,6 +15,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
       isTeachingBubbleVisible: false
