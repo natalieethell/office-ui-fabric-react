@@ -18,6 +18,8 @@ import {
 // } from '@uifabric/experiments';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import './PropertiesTable.scss';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType, ILinkToken } from '../../utilities/parser/index';
 import { FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -168,7 +170,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
   if (linkTokens && linkTokens.length > 0) {
     if (extend) {
       return (
-        <div className={FontClassNames.medium}>
+        <Text variant={'medium'}>
           {'Extends '}
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
@@ -184,11 +186,11 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
               return undefined;
             }
           })}
-        </div>
+        </Text>
       );
     } else {
       return (
-        <span>
+        <Text variant={'medium'}>
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
               const href = '#/components/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
@@ -203,7 +205,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
               return undefined;
             }
           })}
-        </span>
+        </Text>
       );
     }
   }
@@ -245,20 +247,23 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     const { properties, isEnum } = this.state;
 
     return (
-      <div className="PropertiesTable">
+      <Stack className="PropertiesTable" gap={10}>
         {/* <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: title, styles: getPropTitleStyles }}> */}
-        <div className="PropertiesTable-title">{this._renderTitle()}</div>
-        <div className="PropertiesTable-title">{this._renderDescription()}</div>
-        <div className="PropertiesTable-title">{this._renderExtends()}</div>
+        <Stack className="PropertiesTable" gap={5}>
+          {this._renderTitle()}
+          {this._renderDescription()}
+          {this._renderExtends()}
+        </Stack>
         <DetailsList
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
           items={properties}
           columns={isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
           onRenderRow={this._onRenderRow}
+          onRenderDetailsHeader={this._onRenderHeader}
         />
         {/* </CollapsibleSection> */}
-      </div>
+      </Stack>
     );
   }
 
@@ -271,17 +276,13 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description && description !== '' ? (
-      <div className={FontClassNames.medium} dangerouslySetInnerHTML={{ __html: description }} />
-    ) : (
-      undefined
-    );
+    return description && description !== '' ? <Text variant={'medium'} dangerouslySetInnerHTML={{ __html: description }} /> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
-    return title ? <h2 className={FontClassNames.xLarge} dangerouslySetInnerHTML={{ __html: title }} id={name} /> : undefined;
+    return title ? <Text variant={'xLarge'} dangerouslySetInnerHTML={{ __html: title }} id={name} /> : undefined;
   }
 
   private _onRenderRow(props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element {
@@ -318,5 +319,15 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     }
 
     return <DetailsRow {...props} styles={rowStyles} />;
+  }
+
+  private _onRenderHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+    return (
+      <Text variant={'medium'}>
+        {defaultRender!({
+          ...props
+        })}
+      </Text>
+    );
   }
 }
