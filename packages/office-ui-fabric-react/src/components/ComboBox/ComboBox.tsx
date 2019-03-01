@@ -13,7 +13,8 @@ import {
   isIOS,
   isMac,
   KeyCodes,
-  shallowCompare
+  shallowCompare,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -311,6 +312,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       label,
       disabled,
       ariaLabel,
+      ariaDescribedBy,
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
@@ -325,7 +327,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       title,
       keytipProps,
       placeholder,
-      tabIndex
+      tabIndex,
+      autofill
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -382,7 +385,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={disabled || !allowFreeform}
                 aria-labelledby={label && id + '-label'}
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={keytipAttributes['aria-describedby']}
+                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
@@ -395,6 +398,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 preventValueSelection={!focused}
                 placeholder={placeholder}
                 tabIndex={tabIndex}
+                {...autofill}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}

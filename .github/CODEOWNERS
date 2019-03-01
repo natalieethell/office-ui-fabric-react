@@ -17,8 +17,7 @@
 
 #### Core build stuff
 scripts/ @dzearing @kenotron @ecraig12345
-package.json @kenotron @ecraig12345
-*/package.json @dzearing
+package.json @kenotron @ecraig12345 @dzearing
 webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
@@ -28,6 +27,7 @@ LICENSE @kenotron @ecraig12345
 .travis.yml @kenotron @ecraig12345
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
+.npmignore @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
@@ -39,7 +39,7 @@ fabric-website/ @jordandrako
 #### Packages
 packages/charting/ @Raghurk @veeray @chankev
 packages/dashboard/ @Raghurk @veeray @chankev
-packages/foundation/ @jagore
+packages/foundation/ @JasonGore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
@@ -65,36 +65,38 @@ dateMath/     @OfficeDev/uifabric-calendar
 dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
+Accordion/ @JasonGore
 # ActivityItem/
 # Breadcrumb/
-# Button/
+Button/  @khmakoto
 Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
-# Checkbox/
+Checkbox/ @cliffkoh
 ChoiceGroup/   @srideshpande
-# ColorPicker/
-ComboBox/ @ecraig12345
+CollapsibleSection/ @JasonGore
+ColorPicker/ @ecraig12345
+# ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @OfficeDev/uifabric-calendar
-# DetailsList/
+DetailsList/ @KevinTCoughlin
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
-Dropdown/ @ecraig12345
+# Dropdown/
 # Fabric/
-# FacePile/
+FacePile/ @markionium
 FolderCover/ @ThomasMichon
-# FocusTrapZone/
-# FocusZone/
-GroupedList/  @aditima
+FocusTrapZone/ @JasonGore
+FocusZone/ @JasonGore
+GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
-# Label/
-Layer/  @ThomasMichon
+Label/ @cliffkoh
+Layer/  @ThomasMichon @JasonGore
 # Link/
-# List/
+List/ @KevinTCoughlin
 # MarqueeSelection/
 # MessageBar/
 # Modal/
@@ -103,7 +105,7 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 Pagination/ @caradong
 # Panel/
-# Persona/
+Persona/ @markionium
 PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
@@ -115,8 +117,9 @@ ResizeGroup/  @micahgodbolt
 # SearchBox/
 Signals/ @ThomasMichon
 # Slider/
-# SpinButton/
+# SpinButton/   @aneeshack4
 # Spinner/
+Stack/  @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
@@ -124,13 +127,14 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Toggle/  @khmakoto @jasongore
+experiments/src/components/Card/  @khmakoto
+experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/  @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
-# Button/docs/
+Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
@@ -141,7 +145,7 @@ ChoiceGroup/docs/   @srideshpande
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
 DatePicker/docs/   @OfficeDev/uifabric-calendar
-# DetailsList/docs/
+DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
 # Dropdown/docs/
@@ -149,14 +153,14 @@ DocumentCard/docs/ @yiminwu @mikewheaton
 # FacePile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
-GroupedList/docs/  @aditima
+GroupedList/docs/  @aditima @KevinTCoughlin
 HoverCard/docs/   @atneik @Jahnp
 # Icon/docs/
 # Image/docs/
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-# List/docs/
+List/docs/ @KevinTCoughlin
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
@@ -164,7 +168,7 @@ Layer/docs/  @ThomasMichon
 OverflowSet/docs/  @micahgodbolt
 # Overlay/docs/
 # Panel/docs/
-# Persona/docs/
+Persona/docs/ @markionium
 pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/
@@ -175,6 +179,7 @@ ResizeGroup/docs/  @micahgodbolt
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/
+Stack/docs/  @khmakoto
 # SwatchColorPicker/docs/
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/

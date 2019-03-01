@@ -1,6 +1,42 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 22:45:29 GMT and should not be manually modified.
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.11.6
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Switch PivotItems to use headerText not linkText
+
+## 6.11.5
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Changes to support Slots Foundation.
+
+## 6.11.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Use fabric dev build in export to codepen
 
 ## 6.11.3
 Fri, 18 Jan 2019 13:38:05 GMT

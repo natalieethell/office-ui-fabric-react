@@ -385,6 +385,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
+          component: require<any>('./components/pages/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
           component: require<any>('./components/pages/SwatchColorPickerPage').SwatchColorPickerPage,
           key: 'SwatchColorPicker',
           name: 'SwatchColorPicker',
@@ -395,6 +401,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TeachingBubble',
           name: 'TeachingBubble',
           url: '#/examples/teachingbubble'
+        },
+        {
+          component: require<any>('./components/pages/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
         },
         {
           component: require<any>('./components/pages/TextFieldPage').TextFieldPage,

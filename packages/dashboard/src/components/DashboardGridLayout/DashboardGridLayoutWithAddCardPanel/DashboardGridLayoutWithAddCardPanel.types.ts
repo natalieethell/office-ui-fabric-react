@@ -19,15 +19,15 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   addCardPanelCards: IDGLCard[];
 
   /**
-   * The section title
-   */
-  sectionTitle: string;
-
-  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
   isDraggable?: boolean;
+
+  /**
+   * The sections information
+   */
+  sections: ISection[];
 
   /**
    * The header for the add card panel
@@ -42,7 +42,7 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   /**
    * The callback being called each time after a layout change
    */
-  onLayoutChange?: (newLayout: DashboardGridBreakpointLayouts) => void;
+  onLayoutChange?: (newLayout: DashboardGridBreakpointLayouts, cardId?: string) => void;
 
   /**
    * The callback method fired when the add card panel is dismissed
@@ -84,11 +84,6 @@ export interface IDashboardGridLayoutWithAddCardPanelState {
    * The cards that are shown in the add card panel
    */
   cardsForAddCardPanel: IDGLCard[];
-
-  /**
-   * The sections information
-   */
-  sections: ISection[];
 
   /**
    * The breakpoints details along with each layout's card position and size info

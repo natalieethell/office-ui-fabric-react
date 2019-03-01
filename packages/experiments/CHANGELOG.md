@@ -1,6 +1,158 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 13:31:28 GMT and should not be manually modified.
+
+## 6.60.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- move Text component from experiments -> OUFR
+
+## 6.59.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.
+
+## 6.59.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Button: Fixing focus outline and border on circular buttons.
+- Fix RTL handling in SignalsField
+
+## 6.59.0
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Minor changes
+
+- Button: Adding split property to get Split Buttons.
+- Fluent folder: positioned signal-icon on the right
+
+## 6.58.0
+Wed, 20 Feb 2019 21:57:24 GMT
+
+### Minor changes
+
+- Add render-prop pattern to Tile and FolderCover components
+
+### Patches
+
+- Stack: Reexporting component from experiments package.
+
+## 6.57.1
+Mon, 18 Feb 2019 13:38:29 GMT
+
+### Patches
+
+- to useFluentIcon prop to change top padding in style
+- Text: Fix 'as' prop circular reference
+
+## 6.57.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Removing component from experiments package.
+
+## 6.56.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Card: Adding first prototype for Basic Card component.
+- Experiments: Removed form control
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+
+## 6.55.0
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Minor changes
+
+- Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.
+
+### Patches
+
+- Fix id usage in examples
+
+## 6.54.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Stack: Modifying StackItem so that it can render multiple children.
+
+## 6.54.3
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fixed the VerticalPersona not wrapping text properly in IE
+
+## 6.54.2
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.
+
+## 6.54.1
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Remove Slots/Tokens Foundation implementation.
+
+## 6.54.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.
+
+### Patches
+
+-  Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.
+
+## 6.53.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Change slot render function signature for increased flexibility.
+- Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.
+
+## 6.53.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+- Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.
+
+## 6.53.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Stack: Updating API based on feedback from review.
+- Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.
+
+## 6.52.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.
+
+### Patches
+
+- Minor fixes to Toggle and CollapsibleSection.
 
 ## 6.51.2
 Wed, 23 Jan 2019 22:53:12 GMT

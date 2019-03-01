@@ -6,6 +6,7 @@ import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
+import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
 
 /**
  * {@docCategory ComboBox}
@@ -128,6 +129,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   buttonIconProps?: IIconProps;
 
   /**
+   * The AutofillProps to be passed into the Autofill component inside combobox
+   */
+  autofill?: IAutofillProps;
+
+  /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
@@ -202,6 +208,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @defaultvalue true
    */
   isButtonAriaHidden?: boolean;
+
+  /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
 
   /**
    * Optional keytip for this combo box

@@ -222,6 +222,14 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
             },
             {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
+            },
+            {
               title: 'TextField',
               url: '#/components/textfield',
               isFilterable: true,
@@ -292,6 +300,22 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="SearchBox" />,
               getComponent: cb =>
                 require.ensure([], require => cb(require<any>('../../pages/Components/SearchBoxComponentPage').SearchBoxComponentPage))
+            }
+          ]
+        },
+        {
+          title: 'Layout',
+          url: '#/components',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'Stack',
+              url: '#/components/stack',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Stack" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/StackComponentPage').StackComponentPage))
             }
           ]
         },
@@ -792,7 +816,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Customization',
-          url: '#/components/customization',
+          url: '#/components/customizations',
           className: 'componentsPage',
           isCategory: true,
           component: () => <LoadingComponent title="Customization" />,
@@ -801,7 +825,7 @@ export const AppState: IAppState = {
           pages: [
             {
               title: 'Themes',
-              url: '#/customizations/themes',
+              url: '#/components/customizations/themes',
               isFilterable: true,
               component: () => <LoadingComponent title="Themes" />,
               getComponent: cb =>
@@ -809,7 +833,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Colors',
-              url: '#/customizations/colors',
+              url: '#/components/customizations/colors',
               isFilterable: true,
               component: () => <LoadingComponent title="Colors" />,
               getComponent: cb =>
