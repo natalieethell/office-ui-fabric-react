@@ -6,6 +6,8 @@ import {
   ICollapsibleSectionTitleStylesReturnType,
   ICollapsibleSectionTitleProps
 } from '@uifabric/experiments';
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { PropertiesTable } from './PropertiesTable';
 import { IPropertiesTableSetProps, IEnumTableRowJson, ITableRowJson } from './PropertiesTableSet.types';
 import { InterfacePropertyType } from '../../utilities/parser/index';
@@ -13,21 +15,27 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableSetState {
   properties: Array<IProperty>;
+  showSeeMore: boolean;
 }
 
-const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
-  props: ICollapsibleSectionTitleProps,
-  theme: ITheme
-): ICollapsibleSectionTitleStylesReturnType => ({
-  text: [theme.fonts.large]
-});
+export const LARGE_GAP_SIZE = 25;
+
+// const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
+//   props: ICollapsibleSectionTitleProps,
+//   theme: ITheme
+// ): ICollapsibleSectionTitleStylesReturnType => ({
+//   text: [theme.fonts.large]
+// });
 
 export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
   constructor(props: IPropertiesTableSetProps) {
     super(props);
 
+    this._onClickSeeMore = this._onClickSeeMore.bind(this);
+
     this.state = {
-      properties: this._generatePropertyArray()
+      properties: this._generatePropertyArray(),
+      showSeeMore: false
     };
   }
 
@@ -52,9 +60,12 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   public renderEach(): JSX.Element | undefined {
     if (this.state.properties.length > 1) {
       return (
-        <div>
-          <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: 'See More', styles: getPropTitleStyles }}>
-            {this.state.properties.map((item: IProperty, index: number) =>
+        <Stack gap={LARGE_GAP_SIZE}>
+          <ActionButton iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }} onClick={this._onClickSeeMore}>
+            See More
+          </ActionButton>
+          {this.state.showSeeMore &&
+            this.state.properties.map((item: IProperty, index: number) =>
               index !== 0 ? (
                 <PropertiesTable
                   key={item.propertyName}
@@ -69,8 +80,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
                 <div key={'table-' + index} />
               )
             )}
-          </CollapsibleSection>
-        </div>
+        </Stack>
       );
     }
     return undefined;
@@ -78,11 +88,17 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
 
   public render(): JSX.Element {
     return (
-      <div>
+      <Stack gap={LARGE_GAP_SIZE}>
         {this.renderFirst()}
         {this.renderEach()}
-      </div>
+      </Stack>
     );
+  }
+
+  private _onClickSeeMore(): void {
+    this.setState({
+      showSeeMore: !this.state.showSeeMore
+    });
   }
 
   private _generatePropertyArray(): Array<IProperty> {

@@ -10,16 +10,11 @@ import {
   IColumn,
   IGroup
 } from 'office-ui-fabric-react/lib/DetailsList';
-// import {
-//   CollapsibleSection,
-//   ICollapsibleSectionTitleComponent,
-//   ICollapsibleSectionTitleStylesReturnType,
-//   ICollapsibleSectionTitleProps
-// } from '@uifabric/experiments';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
+import { LARGE_GAP_SIZE } from './PropertiesTableSet';
 import './PropertiesTable.scss';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType, ILinkToken } from '../../utilities/parser/index';
 import { FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -39,12 +34,9 @@ export interface IPropertiesTableState {
   isEnum: boolean;
 }
 
-// const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
-//   props: ICollapsibleSectionTitleProps,
-//   theme: ITheme
-// ): ICollapsibleSectionTitleStylesReturnType => ({
-//   text: [theme.fonts.large]
-// });
+const XSMALL_GAP_SIZE = 2.5;
+const SMALL_GAP_SIZE = 10;
+const MEDIUM_GAP_SIZE = 15;
 
 const renderCell = (text: string) => {
   // When the text is passed to this function, it has had newline characters removed,
@@ -60,7 +52,11 @@ const renderCell = (text: string) => {
   }
 
   if (codeBlocks.length === 0) {
-    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+    return (
+      <Text variant="medium">
+        <div dangerouslySetInnerHTML={{ __html: text }} />
+      </Text>
+    );
   }
 
   const eltChildren: JSX.Element[] = [];
@@ -83,7 +79,7 @@ const renderCell = (text: string) => {
     eltChildren.push(<span key={textIndex} dangerouslySetInnerHTML={{ __html: text.substring(textIndex, text.length) }} />);
   }
 
-  return <span>{eltChildren}</span>;
+  return <Text variant="medium">{eltChildren}</Text>;
 };
 
 const renderCellType = (typeTokens: ILinkToken[]) => {
@@ -170,7 +166,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
   if (linkTokens && linkTokens.length > 0) {
     if (extend) {
       return (
-        <Text variant={'medium'}>
+        <Text variant={'small'} className="PropertiesTable-extends">
           {'Extends '}
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
@@ -190,7 +186,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
       );
     } else {
       return (
-        <Text variant={'medium'}>
+        <Text variant={'small'} className="PropertiesTable-extends">
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
               const href = '#/components/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
@@ -247,12 +243,13 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     const { properties, isEnum } = this.state;
 
     return (
-      <Stack className="PropertiesTable" gap={10}>
-        {/* <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: title, styles: getPropTitleStyles }}> */}
-        <Stack className="PropertiesTable" gap={5}>
+      <Stack gap={MEDIUM_GAP_SIZE}>
+        <Stack gap={SMALL_GAP_SIZE}>
           {this._renderTitle()}
-          {this._renderDescription()}
-          {this._renderExtends()}
+          <Stack gap={XSMALL_GAP_SIZE}>
+            {this._renderDescription()}
+            {this._renderExtends()}
+          </Stack>
         </Stack>
         <DetailsList
           selectionMode={SelectionMode.none}
@@ -262,7 +259,6 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
           onRenderRow={this._onRenderRow}
           onRenderDetailsHeader={this._onRenderHeader}
         />
-        {/* </CollapsibleSection> */}
       </Stack>
     );
   }
@@ -276,13 +272,25 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description && description !== '' ? <Text variant={'medium'} dangerouslySetInnerHTML={{ __html: description }} /> : undefined;
+    return description && description !== '' ? (
+      <Text variant={'medium'} className="PropertiesTable-description">
+        <div dangerouslySetInnerHTML={{ __html: description }} />
+      </Text>
+    ) : (
+      undefined
+    );
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
-    return title ? <Text variant={'xLarge'} dangerouslySetInnerHTML={{ __html: title }} id={name} /> : undefined;
+    return title ? (
+      <Text variant={'xxLarge'} className="PropertiesTable-title">
+        <div dangerouslySetInnerHTML={{ __html: title }} id={name} />
+      </Text>
+    ) : (
+      undefined
+    );
   }
 
   private _onRenderRow(props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element {
