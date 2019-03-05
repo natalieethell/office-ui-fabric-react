@@ -8,7 +8,8 @@ import {
 } from '@uifabric/experiments';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { PropertiesTable } from './PropertiesTable';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { PropertiesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './PropertiesTable';
 import { IPropertiesTableSetProps, IEnumTableRowJson, ITableRowJson } from './PropertiesTableSet.types';
 import { InterfacePropertyType } from '../../utilities/parser/index';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -17,15 +18,6 @@ export interface IPropertiesTableSetState {
   properties: Array<IProperty>;
   showSeeMore: boolean;
 }
-
-export const LARGE_GAP_SIZE = 25;
-
-// const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
-//   props: ICollapsibleSectionTitleProps,
-//   theme: ITheme
-// ): ICollapsibleSectionTitleStylesReturnType => ({
-//   text: [theme.fonts.large]
-// });
 
 export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
   constructor(props: IPropertiesTableSetProps) {
@@ -60,26 +52,34 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   public renderEach(): JSX.Element | undefined {
     if (this.state.properties.length > 1) {
       return (
-        <Stack gap={LARGE_GAP_SIZE}>
-          <ActionButton iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }} onClick={this._onClickSeeMore}>
+        <Stack gap={MEDIUM_GAP_SIZE}>
+          <ActionButton
+            iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
+            onClick={this._onClickSeeMore}
+            onRenderText={this._onRenderText}
+            styles={{ textContainer: '4px' }}
+          >
             See More
           </ActionButton>
-          {this.state.showSeeMore &&
-            this.state.properties.map((item: IProperty, index: number) =>
-              index !== 0 ? (
-                <PropertiesTable
-                  key={item.propertyName}
-                  name={item.propertyName}
-                  title={item.title}
-                  description={item.description}
-                  extendsTokens={item.extendsTokens}
-                  properties={item.property}
-                  renderAsEnum={item.propertyType === PropertyType.enum}
-                />
-              ) : (
-                <div key={'table-' + index} />
-              )
-            )}
+          {this.state.showSeeMore && (
+            <Stack gap={LARGE_GAP_SIZE}>
+              {this.state.properties.map((item: IProperty, index: number) =>
+                index !== 0 ? (
+                  <PropertiesTable
+                    key={item.propertyName}
+                    name={item.propertyName}
+                    title={item.title}
+                    description={item.description}
+                    extendsTokens={item.extendsTokens}
+                    properties={item.property}
+                    renderAsEnum={item.propertyType === PropertyType.enum}
+                  />
+                ) : (
+                  undefined
+                )
+              )}
+            </Stack>
+          )}
         </Stack>
       );
     }
@@ -93,6 +93,10 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
         {this.renderEach()}
       </Stack>
     );
+  }
+
+  private _onRenderText(): JSX.Element {
+    return <Text variant="xLarge">See more</Text>;
   }
 
   private _onClickSeeMore(): void {

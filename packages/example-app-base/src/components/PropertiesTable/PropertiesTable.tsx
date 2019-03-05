@@ -14,7 +14,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { LARGE_GAP_SIZE } from './PropertiesTableSet';
 import './PropertiesTable.scss';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType, ILinkToken } from '../../utilities/parser/index';
 import { FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
@@ -34,9 +33,10 @@ export interface IPropertiesTableState {
   isEnum: boolean;
 }
 
-const XSMALL_GAP_SIZE = 2.5;
-const SMALL_GAP_SIZE = 10;
-const MEDIUM_GAP_SIZE = 15;
+export const XSMALL_GAP_SIZE = 2.5;
+export const SMALL_GAP_SIZE = 7.5;
+export const MEDIUM_GAP_SIZE = 15;
+export const LARGE_GAP_SIZE = 50;
 
 const renderCell = (text: string) => {
   // When the text is passed to this function, it has had newline characters removed,
@@ -244,13 +244,21 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
 
     return (
       <Stack gap={MEDIUM_GAP_SIZE}>
-        <Stack gap={SMALL_GAP_SIZE}>
-          {this._renderTitle()}
-          <Stack gap={XSMALL_GAP_SIZE}>
-            {this._renderDescription()}
-            {this._renderExtends()}
+        {description && description !== '' && (extendsTokens && extendsTokens.length > 0) ? (
+          <Stack gap={SMALL_GAP_SIZE}>
+            {this._renderTitle()}
+            {(description && description !== '') || (extendsTokens && extendsTokens.length > 0) ? (
+              <Stack gap={XSMALL_GAP_SIZE}>
+                {this._renderDescription()}
+                {this._renderExtends()}
+              </Stack>
+            ) : (
+              undefined
+            )}
           </Stack>
-        </Stack>
+        ) : (
+          this._renderTitle()
+        )}
         <DetailsList
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
@@ -273,7 +281,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     const { description } = this.props;
 
     return description && description !== '' ? (
-      <Text variant={'medium'} className="PropertiesTable-description">
+      <Text variant={'medium'}>
         <div dangerouslySetInnerHTML={{ __html: description }} />
       </Text>
     ) : (
@@ -285,7 +293,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant={'xxLarge'} className="PropertiesTable-title">
+      <Text variant={'xLarge'}>
         <div dangerouslySetInnerHTML={{ __html: title }} id={name} />
       </Text>
     ) : (
@@ -304,7 +312,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
         }
       },
       isMultiline: {
-        wordBreak: 'break-all'
+        wordBreak: 'break-word'
       }
     };
 
