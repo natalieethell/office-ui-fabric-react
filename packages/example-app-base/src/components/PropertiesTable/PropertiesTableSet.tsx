@@ -57,7 +57,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
             iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
             onClick={this._onClickSeeMore}
             onRenderText={this._onRenderText}
-            styles={{ textContainer: '4px' }}
+            styles={{ root: { paddingLeft: '0px' }, textContainer: { paddingLeft: '4px' } }}
           >
             See More
           </ActionButton>
