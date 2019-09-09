@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Nav: change Utilities import path",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "492d58da97635f900025c14a5bb23b2e27efb291",
+  "date": "2019-09-09T21:04:03.579Z"
+}
