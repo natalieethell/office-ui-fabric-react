@@ -574,7 +574,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         aria-atomic={true}
         aria-label="Apple, Banana, Grape"
         aria-live="off"
-        aria-selected={true}
         className=
             ms-Dropdown-title
             {
